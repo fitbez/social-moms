@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import "./search.css";
 
 const apiKey = process.env.REACT_APP_yelp_API_KEY;
@@ -50,8 +50,6 @@ const Search = () => {
   };
 
   const sort = Object.keys(sortByOptions);
-
-  console.log(sort);
 
   const renderSortByOptions = () => {
     return sort.map((sortByOption) => {
@@ -109,7 +107,6 @@ const Search = () => {
             className="Search-fields"
             onChange={(e) => {
               setLocation(e.target.value);
-              console.log(location);
             }}
           >
             <option value="">Select city</option>
