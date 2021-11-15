@@ -58,7 +58,10 @@ const Search = () => {
       return (
         <li
           className={getSortByClass(sortByOptionValue)}
-          onClick={() => handleSortByChange(sortByOptionValue)}
+          onClick={(e) => {
+            handleSortByChange(sortByOptionValue);
+            handleSearch(e);
+          }}
           key={sortByOptionValue}
         >
           {sortByOption}
@@ -81,42 +84,45 @@ const Search = () => {
   return (
     <div>
       <label htmlFor="yelp-select">Choose activity-Powered by YELP</label>
-      <div>
-        <select
-          name="business"
-          id="business-select"
-          onChange={(e) => {
-            setTerm(e.target.value);
-            console.log(term, location);
-          }}
-        >
-          <option value="">Select Activity </option>
-          <option value="Playgrounds">Playgrounds</option>
-          <option value="Splash Parks">Splash Parks</option>
-          <option value="Kid-Friendly Restaurants">Restaurants</option>
-          <option value="Libraries">Libraries</option>
-          <option value="Museums">Museums</option>
-          <option value="Kid-Activities">Kid Events</option>
-          <option value="Schools">Schools</option>
-          <option value="Hospitals">Hospitals</option>
-        </select>
-      </div>
-      <div>
-        <label>
+      <div className="activity">
+        <div className="select_activity">
           <select
-            className="Search-fields"
+            name="business"
+            id="business-select"
             onChange={(e) => {
-              setLocation(e.target.value);
+              setTerm(e.target.value);
+              console.log(term, location);
             }}
           >
-            <option value="">Select city</option>
-            <option value="Arlington">Arlington, Va</option>
-            <option value="20011">Washington, DC</option>
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles, Ca</option>
+            <option value="">Select Activity </option>
+            <option value="Playgrounds">Playgrounds</option>
+            <option value="Splash Parks">Splash Parks</option>
+            <option value="Kid-Friendly Restaurants">Restaurants</option>
+            <option value="Libraries">Libraries</option>
+            <option value="Museums">Museums</option>
+            <option value="Kid-Activities">Kid Events</option>
+            <option value="Schools">Schools</option>
+            <option value="Hospitals">Hospitals</option>
           </select>
-        </label>
+        </div>
+        <div className="select_location">
+          <label>
+            <select
+              className="Search-fields"
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
+            >
+              <option value="">Select city</option>
+              <option value="Arlington">Arlington, Va</option>
+              <option value="20011">Washington, DC</option>
+              <option value="New York">New York</option>
+              <option value="Los Angeles">Los Angeles, Ca</option>
+            </select>
+          </label>
+        </div>
       </div>
+
       <div className="SearchBar-sort-options">
         <ul>{renderSortByOptions()}</ul>
       </div>
