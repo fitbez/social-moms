@@ -82,10 +82,10 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className="search_activity">
       <label htmlFor="yelp-select">Choose activity-Powered by YELP</label>
       <div className="activity">
-        <div className="select_activity">
+        <div className="select">
           <select
             name="business"
             id="business-select"
@@ -104,31 +104,35 @@ const Search = () => {
             <option value="Schools">Schools</option>
             <option value="Hospitals">Hospitals</option>
           </select>
+          <span className="focus"></span>
         </div>
-        <div className="select_location">
-          <label>
-            <select
-              className="Search-fields"
-              onChange={(e) => {
-                setLocation(e.target.value);
-              }}
-            >
-              <option value="">Select city</option>
-              <option value="Arlington">Arlington, Va</option>
-              <option value="20011">Washington, DC</option>
-              <option value="New York">New York</option>
-              <option value="Los Angeles">Los Angeles, Ca</option>
-            </select>
-          </label>
+        <div className="select">
+          <select
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }}
+          >
+            <option value="">Select city</option>
+            <option value="Arlington">Arlington, Va</option>
+            <option value="20011">Washington, DC</option>
+            <option value="New York">New York</option>
+            <option value="Los Angeles">Los Angeles, Ca</option>
+          </select>
+          <span className="focus"></span>
         </div>
+        <button
+          className="btn"
+          onClick={handleSearch}
+          disabled={!term || !location}
+        >
+          Search
+        </button>
       </div>
 
       <div className="SearchBar-sort-options">
         <ul>{renderSortByOptions()}</ul>
       </div>
-      <button onClick={handleSearch} disabled={!term || !location}>
-        Search
-      </button>
+
       <div className="search_results">
         {!isNotValid
           ? businesses.map((business) => {
@@ -136,17 +140,8 @@ const Search = () => {
                 <div key={business.id} className="search_card">
                   <img src={business.image_url} alt={business.name} />
                   <div className="business_info">
-                    <p>
-                      <strong>Business Name: </strong> {business.name}{" "}
-                    </p>
-                    <p>
-                      <strong>Business Rating: </strong> {business.rating}{" "}
-                    </p>
-                    <a href="https://www.yelp.com/business">
-                      <strong style={{ color: "lightskyblue" }}>
-                        direction{" "}
-                      </strong>
-                    </a>
+                    <p>{business.name} </p>
+                    <p>{business.rating} </p>
                   </div>
                 </div>
               );
