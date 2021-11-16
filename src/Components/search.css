@@ -175,3 +175,7 @@ ul li {
 ul .active {
   color: brown;
 }
+
+ul .active i {
+  margin-right: 0.25em;
+}

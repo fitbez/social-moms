@@ -64,6 +64,11 @@ const Search = () => {
           }}
           key={sortByOptionValue}
         >
+          {getSortByClass(sortByOptionValue) === "active" ? (
+            <i class="fas fa-check"></i>
+          ) : (
+            ""
+          )}
           {sortByOption}
         </li>
       );
@@ -83,7 +88,9 @@ const Search = () => {
 
   return (
     <div className="search_activity">
-      <label htmlFor="yelp-select">Choose activity-Powered by YELP</label>
+      <label htmlFor="yelp-select">
+        Navigate To Kids Friendly Places-Powered by YELP
+      </label>
       <div className="activity">
         <div className="select">
           <select
