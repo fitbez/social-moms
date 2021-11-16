@@ -12,6 +12,14 @@
 
 .search_activity {
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0 0 2rem;
+}
+
+.search_activity label {
+  text-align: left;
+  font-weight: 600;
 }
 
 select {
@@ -31,7 +39,7 @@ select {
 .activity {
   padding-top: 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   /* margin: 0 8rem; */
   width: 60%;
@@ -40,15 +48,16 @@ select {
 .select {
   width: 100%;
   min-width: 10ch;
-  max-width: 30ch;
+  max-width: 15ch;
   border: 1px solid var(--select-border);
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
-  font-size: 1.25rem;
+  margin: 0 1rem 0 1rem;
+  font-size: 1.15rem;
   cursor: pointer;
   line-height: 1.5;
   background-color: #fff;
-  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  background-image: linear-gradient(to top, #f9f9f9, #fff 30%);
   display: grid;
   grid-template-areas: "select";
   align-items: center;
@@ -150,4 +159,19 @@ button:focus {
 
 button:active {
   transform: scale(0.99);
+}
+
+.SearchBar-sort-options {
+  text-align: left;
+  text-decoration: none;
+}
+
+ul li {
+  width: 160px;
+  list-style: none;
+  cursor: pointer;
+}
+
+ul .active {
+  color: brown;
 }
