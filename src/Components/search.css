@@ -10,6 +10,33 @@
   --select-arrow: var(--select-border);
 }
 
+.nav-bar {
+  width: 100vw;
+  height: 6vh;
+  background-color: #fff;
+  position: fixed;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0.8;
+}
+
+.nav-bar ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-bar ul li:first-child {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.header {
+  height: 50vh;
+  background-image: url("../assets/images/mom-with-kid-on-playground.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 5rem;
+}
+
 .search_activity {
   background-color: #fff;
   display: flex;
@@ -42,7 +69,7 @@ select {
   justify-content: flex-start;
   align-items: center;
   /* margin: 0 8rem; */
-  width: 60%;
+  /* width: 60%; */
 }
 
 .select {
@@ -99,12 +126,9 @@ option {
 
 .search_results {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  width: 50%;
   position: absolute;
-  left: 25%;
-  translate: (-50, -50);
 }
 
 .search_card {

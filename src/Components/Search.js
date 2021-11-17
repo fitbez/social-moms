@@ -1,4 +1,6 @@
 import { React, useState } from "react";
+import Header from "./Header";
+import Nav from "./Nav";
 import "./search.css";
 
 const apiKey = process.env.REACT_APP_yelp_API_KEY;
@@ -87,59 +89,62 @@ const Search = () => {
   };
 
   return (
-    <div className="search_activity">
-      <label htmlFor="yelp-select">
-        Navigate To Kids Friendly Places-Powered by YELP
-      </label>
-      <div className="activity">
-        <div className="select">
-          <select
-            name="business"
-            id="business-select"
-            onChange={(e) => {
-              setTerm(e.target.value);
-              console.log(term, location);
-            }}
+    <div>
+      <Nav />
+      <Header />
+      <div className="search_activity">
+        <label htmlFor="yelp-select">
+          Navigate To Kids Friendly Places-Powered by YELP
+        </label>
+        <div className="activity">
+          <div className="select">
+            <select
+              name="business"
+              id="business-select"
+              onChange={(e) => {
+                setTerm(e.target.value);
+                console.log(term, location);
+              }}
+            >
+              <option value="">Select Activity </option>
+              <option value="Playgrounds">Playgrounds</option>
+              <option value="Splash Parks">Splash Parks</option>
+              <option value="Kid-Friendly Restaurants">Restaurants</option>
+              <option value="Libraries">Libraries</option>
+              <option value="Museums">Museums</option>
+              <option value="Kid-Activities">Kid Events</option>
+              <option value="Schools">Schools</option>
+              <option value="Hospitals">Hospitals</option>
+            </select>
+            <span className="focus"></span>
+          </div>
+          <div className="select">
+            <select
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
+            >
+              <option value="">Select city</option>
+              <option value="Arlington">Arlington, Va</option>
+              <option value="20011">Washington, DC</option>
+              <option value="New York">New York</option>
+              <option value="Los Angeles">Los Angeles, Ca</option>
+            </select>
+            <span className="focus"></span>
+          </div>
+          <button
+            className="btn"
+            onClick={handleSearch}
+            disabled={!term || !location}
           >
-            <option value="">Select Activity </option>
-            <option value="Playgrounds">Playgrounds</option>
-            <option value="Splash Parks">Splash Parks</option>
-            <option value="Kid-Friendly Restaurants">Restaurants</option>
-            <option value="Libraries">Libraries</option>
-            <option value="Museums">Museums</option>
-            <option value="Kid-Activities">Kid Events</option>
-            <option value="Schools">Schools</option>
-            <option value="Hospitals">Hospitals</option>
-          </select>
-          <span className="focus"></span>
+            Search
+          </button>
         </div>
-        <div className="select">
-          <select
-            onChange={(e) => {
-              setLocation(e.target.value);
-            }}
-          >
-            <option value="">Select city</option>
-            <option value="Arlington">Arlington, Va</option>
-            <option value="20011">Washington, DC</option>
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles, Ca</option>
-          </select>
-          <span className="focus"></span>
+
+        <div className="SearchBar-sort-options">
+          <ul>{renderSortByOptions()}</ul>
         </div>
-        <button
-          className="btn"
-          onClick={handleSearch}
-          disabled={!term || !location}
-        >
-          Search
-        </button>
       </div>
-
-      <div className="SearchBar-sort-options">
-        <ul>{renderSortByOptions()}</ul>
-      </div>
-
       <div className="search_results">
         {!isNotValid
           ? businesses.map((business) => {
