@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import Header from "./Header";
 import Nav from "./Nav";
 import "./search.css";
+import StarRatings from "react-star-ratings";
 
 const apiKey = process.env.REACT_APP_yelp_API_KEY;
 
@@ -156,7 +157,14 @@ const Search = () => {
               <img src={business.image_url} alt={business.name} />
               <div className="business_info">
                 <p>{business.name} </p>
-                <p>{business.rating} </p>
+                <StarRatings
+                  rating={business.rating}
+                  starRatedColor="brown"
+                  numberOfStars={5}
+                  name="rating"
+                  starDimension="12.5px"
+                  starSpacing="2.5px"
+                />
               </div>
             </div>
           );
