@@ -12,11 +12,12 @@
 
 .nav-bar {
   width: 100vw;
-  height: 6vh;
+  height: 10vh;
   background-color: #fff;
   position: fixed;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); */
   opacity: 0.8;
+  z-index: 1;
 }
 
 .nav-bar ul {
@@ -29,9 +30,14 @@
   font-weight: 600;
 }
 
+.nav-bar ul li:first-child:hover {
+  color: brown;
+  transition: ease-in-out 0.5s;
+}
+
 .header {
-  height: 50vh;
-  background-image: url("../assets/images/mom-with-kid-on-playground.jpeg");
+  height: 70vh;
+  background-image: url("../assets/images/social-moms-illustration.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 5rem;
