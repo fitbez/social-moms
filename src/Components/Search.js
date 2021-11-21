@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import Header from "./Header";
 import Nav from "./Nav";
 import "./search.css";
@@ -12,7 +12,7 @@ const Search = () => {
   const [isNotValid, setIsNotValid] = useState(true);
   const [sortBy, setSortBy] = useState("best_match");
 
-  const fechData = async (term, location) => {
+  const fechData = async (term, location, sortBy) => {
     const response = await fetch(
       "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" +
         term +
@@ -32,6 +32,10 @@ const Search = () => {
     setbusiness(newData.businesses);
     console.log(businesses);
   };
+
+  useEffect(() => {
+    fechData("library", "silver spring", "best_match");
+  }, []);
 
   const sortByOptions = {
     "Best Match": "best_match",
@@ -80,12 +84,12 @@ const Search = () => {
   const handleSearch = (event) => {
     if (term !== "" && location !== "") {
       setIsNotValid(false);
+      fechData(term, location, sortBy);
+      event.preventDefault();
     } else {
       // alert("Please select acitvity and location");
+      setSortBy("best_match");
     }
-
-    fechData(term, location);
-    event.preventDefault();
   };
 
   return (
@@ -146,19 +150,17 @@ const Search = () => {
         </div>
       </div>
       <div className="search_results">
-        {!isNotValid
-          ? businesses.map((business) => {
-              return (
-                <div key={business.id} className="search_card">
-                  <img src={business.image_url} alt={business.name} />
-                  <div className="business_info">
-                    <p>{business.name} </p>
-                    <p>{business.rating} </p>
-                  </div>
-                </div>
-              );
-            })
-          : ""}
+        {businesses.map((business) => {
+          return (
+            <div key={business.id} className="search_card">
+              <img src={business.image_url} alt={business.name} />
+              <div className="business_info">
+                <p>{business.name} </p>
+                <p>{business.rating} </p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
