@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Nav from "./Nav";
 import "./search.css";
@@ -15,7 +15,7 @@ const Search = () => {
 
   const fechData = async (term, location, sortBy) => {
     const response = await fetch(
-      "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" +
+      "https://api.yelp.com/v3/businesses/search?term=" +
         term +
         "&location=" +
         location +
@@ -35,7 +35,7 @@ const Search = () => {
   };
 
   useEffect(() => {
-    fechData("library", "silver spring", "best_match");
+    fechData("playgrounds", "silver spring", "best_match");
   }, []);
 
   const sortByOptions = {
@@ -99,7 +99,8 @@ const Search = () => {
       <Header />
       <div className="search_activity">
         <label htmlFor="yelp-select">
-          Navigate To Kids Friendly Places-Powered by YELP
+          Find kids friendly places around DMV area-
+          <span className="powerd_by_yelp">powered by YELP</span>
         </label>
         <div className="activity">
           <div className="select">
@@ -150,25 +151,30 @@ const Search = () => {
           <ul>{renderSortByOptions()}</ul>
         </div>
       </div>
-      <div className="search_results">
-        {businesses.map((business) => {
-          return (
-            <div key={business.id} className="search_card">
-              <img src={business.image_url} alt={business.name} />
-              <div className="business_info">
-                <p>{business.name} </p>
-                <StarRatings
-                  rating={business.rating}
-                  starRatedColor="brown"
-                  numberOfStars={5}
-                  name="rating"
-                  starDimension="12.5px"
-                  starSpacing="2.5px"
-                />
+      <div className="search_results_container">
+        <div className="search_results">
+          {businesses.map((business) => {
+            return (
+              <div key={business.id} className="search_card">
+                <img src={business.image_url} alt={business.name} />
+                <div className="business_info">
+                  <p>{business.name} </p>
+                  <StarRatings
+                    rating={business.rating}
+                    starRatedColor="brown"
+                    numberOfStars={5}
+                    name="rating"
+                    starDimension="12.5px"
+                    starSpacing="2.5px"
+                  />
+                  <a className="direction" href="google.com">
+                    direction
+                  </a>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

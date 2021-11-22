@@ -50,6 +50,11 @@
   padding: 3rem 0 0 2rem;
 }
 
+.powerd_by_yelp {
+  font-size: small;
+  color: brown;
+}
+
 .search_activity label {
   text-align: left;
   font-weight: 600;
@@ -130,11 +135,19 @@ option {
   outline: var(--select-focus);
 }
 
+.search_results_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
 .search_results {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   position: absolute;
+  margin: 1rem 0 0 2.5rem;
 }
 
 .search_card {
@@ -208,4 +221,11 @@ ul .active {
 
 ul .active i {
   margin-right: 0.25em;
+}
+
+.direction {
+  margin: 0px 0px 0px 1rem;
+  font-size: small;
+  /* text-decoration: none; */
+  color: blue;
 }
