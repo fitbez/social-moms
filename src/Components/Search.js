@@ -15,7 +15,7 @@ const Search = () => {
 
   const fechData = async (term, location, sortBy) => {
     const response = await fetch(
-      "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" +
+      "https://social-moms-proxy.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" +
         term +
         "&location=" +
         location +
